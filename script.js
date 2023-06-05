@@ -29,7 +29,7 @@ function WList() {
     }
 
     this.randomCurrentPair = function() {
-        this.currentPair = this.list[Math.floor(Math.random(0, this.list.length) * 10)]
+        this.currentPair = this.list[Math.floor(Math.random() * this.list.length)]
     }
 }
 
