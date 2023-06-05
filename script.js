@@ -6,8 +6,10 @@ const menuBtn = document.querySelector(".menuBtn")
 const nextBtn = document.querySelector(".nextBtn")
 
 let wList = new WList
-wList.createList(menu.querySelector(".menu-textarea").value)
-setPair(document.querySelector(".front-text"), document.querySelector(".back-text"), wList.currentPair)
+if(menu.querySelector(".menu-textarea").value != '') {
+    wList.createList(menu.querySelector(".menu-textarea").value)
+    setPair(document.querySelector(".front-text"), document.querySelector(".back-text"), wList.currentPair)
+}
 
 //Конструктор списка пар
 function WList() {
@@ -47,6 +49,7 @@ menuBtn.addEventListener("click", () => {
 
     if(menu.style.display == "none" || menu.style.display == "") {
         menu.style.display = "block"
+        menu.querySelector(".menu-textarea").focus()
         card.style.display = "none"
     }else if(card.style.display == "none") {
         menu.style.display = "none"
@@ -58,6 +61,11 @@ menuBtn.addEventListener("click", () => {
 
 //Нажатие на кнопку next
 nextBtn.addEventListener("click", () => {
-    wList.randomCurrentPair()
-    setPair(document.querySelector(".front-text"), document.querySelector(".back-text"), wList.currentPair)
+    if(wList.list == '' && menu.querySelector(".menu-textarea").value != '') {
+        wList.createList(menu.querySelector(".menu-textarea").value)
+        setPair(document.querySelector(".front-text"), document.querySelector(".back-text"), wList.currentPair)
+    }else if(wList.list != '') {
+        wList.randomCurrentPair()
+        setPair(document.querySelector(".front-text"), document.querySelector(".back-text"), wList.currentPair)
+    }
 })
