@@ -1,14 +1,18 @@
 const card = document.querySelector(".card") //Карточка
+const frontText = document.querySelector(".front-text")
+const backText = document.querySelector(".back-text")
+
 const menu = document.querySelector(".menu") //Окно меню
+const menuTextarea = document.querySelector(".menu-textarea")
 
 //Кнопки
 const menuBtn = document.querySelector(".menuBtn")
 const nextBtn = document.querySelector(".nextBtn")
 
 let wList = new WList
-if(menu.querySelector(".menu-textarea").value != '') {
-    wList.createList(menu.querySelector(".menu-textarea").value)
-    setPair(document.querySelector(".front-text"), document.querySelector(".back-text"), wList.currentPair)
+if(menuTextarea.value != '') {
+    wList.createList(menuTextarea.value)
+    setPair(frontText, backText, wList.currentPair)
 }
 
 //Конструктор списка пар
@@ -19,7 +23,7 @@ function WList() {
     this.createList = function(text){
         let pairs = []
         let result = []
-        pairs = text.split("\n")
+        pairs = text.trim().split("\n")
 
         for(let i = 0; i<pairs.length; i++) {
             result[i] = pairs[i].split("\t")
@@ -49,7 +53,7 @@ menuBtn.addEventListener("click", () => {
 
     if(menu.style.display == "none" || menu.style.display == "") {
         menu.style.display = "block"
-        menu.querySelector(".menu-textarea").focus()
+        menuTextarea.focus()
         card.style.display = "none"
     }else if(card.style.display == "none") {
         menu.style.display = "none"
@@ -61,11 +65,16 @@ menuBtn.addEventListener("click", () => {
 
 //Нажатие на кнопку next
 nextBtn.addEventListener("click", () => {
-    if(wList.list == '' && menu.querySelector(".menu-textarea").value != '') {
-        wList.createList(menu.querySelector(".menu-textarea").value)
-        setPair(document.querySelector(".front-text"), document.querySelector(".back-text"), wList.currentPair)
+    if(wList.list == '' && menuTextarea.value != '') {
+        wList.createList(menuTextarea.value)
+        setPair(frontText, backText, wList.currentPair)
     }else if(wList.list != '') {
         wList.randomCurrentPair()
-        setPair(document.querySelector(".front-text"), document.querySelector(".back-text"), wList.currentPair)
+        setPair(frontText, backText, wList.currentPair)
     }
+})
+
+//Создание списка при изменении текста
+menuTextarea.addEventListener("change", () => {
+    wList.createList(menuTextarea.value)
 })

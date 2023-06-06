@@ -26,13 +26,6 @@
     flex-direction: column;
   }
 
-  @media (max-width: 900px) , (max-height: 540px) {
-    .card-container {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
   .card {
     width: 100%;
     height: 100%;
@@ -114,6 +107,17 @@
 
   .button:hover {
     background-color: #d0d0d0;
+  }
+
+  @media (max-device-width: 1024px) and (orientation: portrait) ,  (max-device-width: 1024px) and (orientation: landscape){
+    .card-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .button:hover {
+      background-color: #fff;
+    }
   }
 
 /* ########## MENU ########## */
