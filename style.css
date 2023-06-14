@@ -41,15 +41,10 @@
     cursor: pointer;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.2s;
+    transition: transform 0.4s;
     margin-bottom: 20px;
     display: block;
-
     user-select: none;
-  }
-
-  .card.flipped {
-    transform: rotateY(180deg);
   }
 
   .card .front,

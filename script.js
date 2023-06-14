@@ -43,13 +43,13 @@ function WList() {
 
 //Setting pairs on the card
 function setPair(front, back, pair) {
-    front.innerText = pair[0]
-    back.innerText = pair[1]
+    front.innerText = pair[0].toUpperCase()
+    back.innerText = pair[1].toUpperCase()
 }
 
 //Card flip
 card.addEventListener("click", () => {
-    card.classList.toggle('flipped')
+    changeRotation(card, getRotation(card)[0], getRotation(card)[1] + 180)
 })
 
 //Pressing "Enter" when the card is focused
@@ -84,9 +84,29 @@ nextBtn.addEventListener("click", () => {
         wList.randomCurrentPair()
         setPair(frontText, backText, wList.currentPair)
     }
+
+    changeRotation(card, getRotation(card)[0] + 360, getRotation(card)[1])
 })
 
 //Creating a List When Text Changes
 menuTextarea.addEventListener("change", () => {
     wList.createList(menuTextarea.value)
 })
+
+//Getting rotation
+function getRotation (elem) {
+    let rotations
+    if(elem.style.transform != ""){
+        rotations = elem.style.transform.split(' ')
+        rotations[0] = parseInt(rotations[0].match(/\d+/))
+        rotations[1] = parseInt(rotations[1].match(/\d+/))
+    }else{
+        rotations = [0, 0]
+    }
+    return rotations
+}
+
+//Changing rotation
+function changeRotation (elem, X = 0, Y = 0) {
+    elem.style.transform = `rotateX(${X}deg) rotateY(${Y}deg)`
+}
