@@ -118,6 +118,10 @@
     .button:hover {
       background-color: #fff;
     }
+
+    .menu-textarea:focus, .button:focus, .card:focus {
+      outline: none;
+    }
   }
 
 /* ########## MENU ########## */
@@ -140,4 +144,8 @@
     border: none;
     font-size: 24px;
     resize: none;
+}
+
+.menu-textarea:focus, .button:focus, .card:focus {
+  outline: rgb(223, 180, 117) solid 1px;
 }

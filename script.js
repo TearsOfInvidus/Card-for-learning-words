@@ -1,11 +1,13 @@
-const card = document.querySelector(".card") //Карточка
+//Card
+const card = document.querySelector(".card") 
 const frontText = document.querySelector(".front-text")
 const backText = document.querySelector(".back-text")
 
-const menu = document.querySelector(".menu") //Окно меню
+//Menu
+const menu = document.querySelector(".menu")
 const menuTextarea = document.querySelector(".menu-textarea")
 
-//Кнопки
+//Buttons
 const menuBtn = document.querySelector(".menuBtn")
 const nextBtn = document.querySelector(".nextBtn")
 
@@ -15,7 +17,7 @@ if(menuTextarea.value != '') {
     setPair(frontText, backText, wList.currentPair)
 }
 
-//Конструктор списка пар
+//Pair list constructor
 function WList() {
     this.list = [];
     this.currentPair;
@@ -23,10 +25,12 @@ function WList() {
     this.createList = function(text){
         let pairs = []
         let result = []
-        pairs = text.trim().split("\n")
+        pairs = text.replaceAll("/t", "\t").trim().split("\n")
 
         for(let i = 0; i<pairs.length; i++) {
             result[i] = pairs[i].split("\t")
+            result[i][0].trim
+            result[i][1].trim
         }
         this.list = result
         this.currentPair = result[0]
@@ -37,18 +41,25 @@ function WList() {
     }
 }
 
-//Установка пар на карточку
+//Setting pairs on the card
 function setPair(front, back, pair) {
     front.innerText = pair[0]
     back.innerText = pair[1]
 }
 
-//Поворот карточки
+//Card flip
 card.addEventListener("click", () => {
     card.classList.toggle('flipped')
 })
 
-//Нажатие на кнопку menu
+//Pressing "Enter" when the card is focused
+card.addEventListener("keydown", (e) => {
+    if(document.hasFocus(card) == true && e.key == "Enter") {
+        card.click()
+    }
+})
+
+//Pressing the 'menu' button
 menuBtn.addEventListener("click", () => {
 
     if(menu.style.display == "none" || menu.style.display == "") {
@@ -58,12 +69,13 @@ menuBtn.addEventListener("click", () => {
     }else if(card.style.display == "none") {
         menu.style.display = "none"
         card.style.display = "block"
+        card.focus()
     }else{
         console.log("Что-то не так (((")
     }
 })
 
-//Нажатие на кнопку next
+//Pressing the 'next' button
 nextBtn.addEventListener("click", () => {
     if(wList.list == '' && menuTextarea.value != '') {
         wList.createList(menuTextarea.value)
@@ -74,7 +86,7 @@ nextBtn.addEventListener("click", () => {
     }
 })
 
-//Создание списка при изменении текста
+//Creating a List When Text Changes
 menuTextarea.addEventListener("change", () => {
     wList.createList(menuTextarea.value)
 })
