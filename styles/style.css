@@ -1,0 +1,34 @@
+@import url(card.css);
+@import url(buttons.css);
+@import url(menu.css);
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    background-color: #0f0f0f;
+  }
+
+  @media (max-device-width: 1024px) and (orientation: portrait) ,  (max-device-width: 1024px) and (orientation: landscape){
+    .card-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .button:hover {
+      background-color: #fff;
+    }
+
+    .menu-textarea:focus, .button:focus, .card:focus {
+      outline: none;
+    }
+  }

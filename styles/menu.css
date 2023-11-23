@@ -1,0 +1,111 @@
+/* ########## MENU ########## */
+
+.menu {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.menu-textarea {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background-color: #212121;
+    color: #fff;
+    border-radius: inherit;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    outline: none;
+    border: none;
+    font-size: 24px;
+    resize: none;
+}
+
+.menu-textarea:focus, .button:focus, .card:focus, .menu-textbox:focus{
+  outline: #6c00c5 solid 2px;
+}
+
+/* ########## ALT MENU ########## */
+
+.m2-container{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+  display: none;
+}
+
+.front-menu2, .back-menu2{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background-color: #212121;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* .front-menu2::-webkit-scrollbar, .back-menu2::-webkit-scrollbar{
+  display: block;
+} */
+
+.menu2-pair{
+  position: relative;
+  width: 100%;
+  height: auto;
+  gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu2-word, .menu2-translation{
+  width: 100%;
+  height: 100%;
+  min-height: 50px;
+  background-color: #313131;
+  padding: 5px;
+}
+
+.menu2-copy, .menu2-copy:hover, .menu2-copy:focus{
+  background-color: green;
+  color: #fff;
+}
+
+.del{
+  background-color: #313131;
+  height: 100%;
+}
+
+.del:hover, .del:focus{
+  background-color: tomato;
+}
+
+.add{
+  background-color: #313131;
+}
+
+.add:hover, .add:focus{
+  background-color: lightgreen;
+}
+
+.menu-textbox{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background-color: #313131;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}

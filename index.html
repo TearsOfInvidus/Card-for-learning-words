@@ -3,7 +3,7 @@
 
 <head>
   <title>Карточка для изучения слов</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/style.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -12,23 +12,46 @@
 
   <div class="card-container">
 
-    <div class="menu" spellcheck="false">
-      <textarea class="menu-textarea" name="" id="" cols="30" rows="10"></textarea>
-    </div>
-
     <div class="card" tabindex="0">
-      <div class="front"><span class="front-text">FRONT</span></div>
-      <div class="back"><span class="back-text">BACK</span></div>
+      <div class="front-menu"><div class="menu" spellcheck="false">
+        <textarea tabindex="1" class="menu-textarea" name="list1" id="list1" cols="30" rows="10"></textarea>
+        <div class="m2-container">
+          <div class="front-menu2"></div>
+        </div>
+      </div></div>
+
+      <div class="front"><span class="front-text"></span></div>
+
+      <div class="back-menu"><div class="menu" spellcheck="false">
+        <textarea tabindex="1" class="menu-textarea" name="list2" id="list2" cols="30" rows="10"></textarea>
+        <div class="m2-container">
+          <div class="back-menu2"></div>
+        </div>
+      </div></div>
+
+      <div class="back"><span class="back-text"></span></div>
     </div>
 
     <div class="buttons">
-      <button class="button menuBtn" tabindex="0">Menu</button>
-      <button class="button nextBtn" tabindex="0">Next</button>
+      <button class="button menuBtn" tabindex="0">MENU</button>
+      <button class="button altMenuBtn" tabindex="0">
+        <span class="altMenuBtn-mark">*</span>
+        alt
+      </button>
+      <button class="button nextBtn" tabindex="0">NEXT</button>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="scripts/global_variables.js"></script>
+  <script src="scripts/Wlist_constructor.js"></script>
+  <script src="scripts/card.js"></script>
+  <script src="scripts/menu.js"></script>
+  <script src="scripts/buttons/menu_btn.js"></script>
+  <script src="scripts/buttons/next_btn.js"></script>
+  <script src="scripts/buttons/altMenu_Btn.js"></script>
+  <script src="scripts/script.js"></script>
 
 </body>
 
 </html>
+
