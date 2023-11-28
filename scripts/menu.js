@@ -1,78 +1,65 @@
-if (menuTextarea1.value != '') {
-    wList.createList(menuTextarea1.value)
-    setPair(frontText, backText, wList.currentPair)
-} else if (menuTextarea2.value != '') {
-    wList.createList(menuTextarea2.value)
-    setPair(frontText, backText, wList.currentPair)
-}
+//Creating a List When Text Changes
+frontMenuMain.addEventListener("input", () => {
+    wList.createList(frontMenuMain.value)
+    backMenuMain.value = frontMenuMain.value
+})
 
 //Creating a List When Text Changes
-menuTextarea1.addEventListener("input", () => {
-    wList.createList(menuTextarea1.value)
-    menuTextarea2.value = menuTextarea1.value
+backMenuMain.addEventListener("input", () => {
+    wList.createList(backMenuMain.value)
+    frontMenuMain.value = backMenuMain.value
 })
 
-menuTextarea2.addEventListener("input", () => {
-    wList.createList(menuTextarea2.value)
-    menuTextarea1.value = menuTextarea2.value
-})
+//Добавление пары в список при нажатии add
+backMenuAlt.querySelectorAll(".add").forEach((e) => {
+    e.addEventListener("click", () => {
+        if(backMenuAlt.querySelector(".mtb1").value != "" && backMenuAlt.querySelector(".mtb2").value != ""){
+            wList.addListItem(backMenuAlt.querySelector(".mtb1").value, backMenuAlt.querySelector(".mtb2").value)
+            
+            menuAltList.forEach((e) => { //Заполнение списка пар альтернативного меню элементами
+                printList(e, wList)
+            })
+        }
+    })
+}) 
 
 //Generates a table from a list of pairs
 function printList(parentNode, dictionary) {
     parentNode.innerHTML = ""
 
-    const menu2AddPair = document.createElement("div")
-    menu2AddPair.classList = "menu2-pair"
-    menu2AddPair.innerHTML =
-        `
-    <input class="menu2-word menu-textbox mtb1" placeholder="WORD"></input>
-    <input class="menu2-translation menu-textbox mtb2" placeholder="TRANSLATION"></input>
-    <button class="button add">add</button>
-    `;
-
-    parentNode.append(menu2AddPair)
-
-    menu2AddPair.querySelector(".add").addEventListener("click", () => {
-
-        if(menu2AddPair.querySelector(".mtb1").value != "" && menu2AddPair.querySelector(".mtb2").value != ""){
-            dictionary.addListItem(menu2AddPair.querySelector(".mtb1").value, menu2AddPair.querySelector(".mtb2").value)
-            printList(parentNode, dictionary)
-        }
-    })
-
     dictionary.list.forEach(element => {
         const menu2Pair = document.createElement("div")
-        menu2Pair.classList = "menu2-pair"
+        menu2Pair.classList = "menu-alt-pair"
         menu2Pair.innerHTML =
             `
-        <button class="menu2-word button">${element[0]}</button>
-        <button class="menu2-translation button">${element[1]}</button>
-        <button class="button del">del</button>
+        <button class="menu-alt-word button" tabindex="1">${element[0]}</button>
+        <button class="menu-alt-translation button" tabindex="1">${element[1]}</button>
+        <button class="button del" tabindex="1">del</button>
         `;
 
-        const wordBtn = menu2Pair.querySelector(".menu2-word");
-        wordBtn.addEventListener("click", () => {
+        const wordBtn = menu2Pair.querySelector(".menu-alt-word");
+        wordBtn.addEventListener("click", () => { //Копирование слова при нажатии + Анимация
 
-            wordBtn.classList.add("menu2-copy")
+            wordBtn.classList.add("menu-alt-button-copy")
             setTimeout(() => {
-                wordBtn.classList.remove("menu2-copy")
+                wordBtn.classList.remove("menu-alt-button-copy")
             }, 400)
 
             navigator.clipboard.writeText(wordBtn.textContent)
         })
 
-        const translationBtn = menu2Pair.querySelector(".menu2-translation");
-        translationBtn.addEventListener("click", () => {
-            translationBtn.classList.add("menu2-copy")
+        const translationBtn = menu2Pair.querySelector(".menu-alt-translation");
+        translationBtn.addEventListener("click", () => { //Копирование слова при нажатии + Анимация
+            translationBtn.classList.add("menu-alt-button-copy")
             setTimeout(() => {
-                translationBtn.classList.remove("menu2-copy")
+                translationBtn.classList.remove("menu-alt-button-copy")
             }, 400)
 
             navigator.clipboard.writeText(translationBtn.textContent)
         })
 
         const delBtn = menu2Pair.querySelector(".del");
-        delBtn.addEventListener("click", () => {
+        delBtn.addEventListener("click", () => { //Удаление пары и обновление списка при нажатии на del
             dictionary.list.splice(dictionary.list.indexOf(element), 1)
             printList(parentNode, dictionary)
         })
@@ -81,6 +68,7 @@ function printList(parentNode, dictionary) {
     });
 }
 
+//Вывод списка пар в виде текста с форматированием "text    text\n"
 function printTextArea(parentNode, pairList) {
     parentNode.value = ""
     pairList.forEach(element => {

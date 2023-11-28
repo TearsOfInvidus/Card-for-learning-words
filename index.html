@@ -10,35 +10,63 @@
 
 <body>
 
-  <div class="card-container">
+  <div class="card-container">  <!--Основной контейнер-->
+    <div class="card" tabindex="1"> <!--Карточка-->
 
-    <div class="card" tabindex="0">
-      <div class="front-menu"><div class="menu" spellcheck="false">
-        <textarea tabindex="1" class="menu-textarea" name="list1" id="list1" cols="30" rows="10"></textarea>
-        <div class="m2-container">
-          <div class="front-menu2"></div>
+      <div class="card-front"> <!--Фронтальная часть карточки-->
+        <div class="front-menu-container">
+          <div class="menu" spellcheck="false"> <!--Фронтальное меню-->
+            <textarea tabindex="1" class="menu-main" name="front-menu-textarea" id="front-menu-textarea" cols="30" rows="10"></textarea>
+            <div class="menu-alt-container"> <!--Альтернативное фронтальное меню-->
+              <div class="front-menu-alt">
+                <div class="menu-alt-pair">
+                  <input class="menu-alt-word menu-textbox mtb1" placeholder="WORD" tabindex="1"></input>
+                  <input class="menu-alt-translation menu-textbox mtb2" placeholder="TRANSLATION" tabindex="1"></input>
+                  <button class="button add" tabindex="1">add</button>
+                </div>
+                <div class="menu-alt-list"></div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div></div>
-
-      <div class="front"><span class="front-text"></span></div>
-
-      <div class="back-menu"><div class="menu" spellcheck="false">
-        <textarea tabindex="1" class="menu-textarea" name="list2" id="list2" cols="30" rows="10"></textarea>
-        <div class="m2-container">
-          <div class="back-menu2"></div>
+  
+        <div class="front-text-container"> <!--Фронтальная часть с текстом-->
+          <span class="front-text"></span>
         </div>
-      </div></div>
+      </div>
 
-      <div class="back"><span class="back-text"></span></div>
+      <div class="card-back"> <!--Задняя часть карточки-->
+        <div class="back-menu-container">
+          <div class="menu" spellcheck="false"> <!--Заднее меню-->
+            <textarea tabindex="1" class="menu-main" name="back-menu-textarea" id="back-menu-textarea" cols="30" rows="10"></textarea>
+            <div class="menu-alt-container"> <!--Альтернативное заднее меню-->
+              <div class="back-menu-alt">
+                <div class="menu-alt-pair">
+                  <input class="menu-alt-word menu-textbox mtb1" placeholder="WORD" tabindex="1"></input>
+                  <input class="menu-alt-translation menu-textbox mtb2" placeholder="TRANSLATION" tabindex="1"></input>
+                  <button class="button add" tabindex="1">add</button>
+                </div>
+                <div class="menu-alt-list"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="back-text-container"> <!--Задняя часть с текстом-->
+          <span class="back-text"></span>
+        </div>  
+      </div>
+
     </div>
 
+    <!-- БЛОК КНОПОК (ЗАЕБИСЬ, НЕ ТРОЖЬ!!!) -->
     <div class="buttons">
-      <button class="button menuBtn" tabindex="0">MENU</button>
-      <button class="button altMenuBtn" tabindex="0">
+      <button class="button menuBtn" tabindex="1">MENU</button>
+      <button class="button altMenuBtn" tabindex="1">
         <span class="altMenuBtn-mark">*</span>
         alt
       </button>
-      <button class="button nextBtn" tabindex="0">NEXT</button>
+      <button class="button nextBtn" tabindex="1">NEXT</button>
     </div>
   </div>
 

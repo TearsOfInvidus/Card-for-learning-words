@@ -2,30 +2,34 @@
 menuBtn.addEventListener("click", () => {
 
     if(isMenuOpened === false && isRotating === false){
-        card.tabIndex = "0"
+        card.tabIndex = "-999"
         if(isFront === true){
-            backMenu.style.display = "block";
-            frontMenu.style.display = "none";
-            card.click();
-            isMenuOpened = true;
-            list2.focus()
+            backMenuContainer.style.display = "block"
+            backTextContainer.style.display = "none"
+            frontMenuContainer.style.display = "none"
+            card.click()
+            isMenuOpened = true
+            backMenuMain.focus()
         }else{
-            backMenu.style.display = "none";
-            frontMenu.style.display = "block";
-            card.click();
-            isMenuOpened = true;
-            list1.focus()
+            backMenuContainer.style.display = "none"
+            frontMenuContainer.style.display = "block"
+            frontTextContainer.style.display = "none"
+            card.click()
+            isMenuOpened = true
+            frontMenuMain.focus()
         }
-        printTextArea(menuTextarea1, wList.list)
-        printTextArea(menuTextarea2, wList.list)
+        printTextArea(frontMenuMain, wList.list)
+        printTextArea(backMenuMain, wList.list)
     }else if (isMenuOpened === true && isRotating === false){
         card.tabIndex = "1"
         setTimeout(closeAnimation => {
-            backMenu.style.display = "none";
-            frontMenu.style.display = "none";
-        }, 200)
-        isMenuOpened = false;
-        card.click(); 
+            backMenuContainer.style.display = "none"
+            frontMenuContainer.style.display = "none"
+            frontTextContainer.style.display = "flex"
+            backTextContainer.style.display = "flex"
+        }, 400)
+        isMenuOpened = false
+        card.click()
         card.focus()
     }
 })

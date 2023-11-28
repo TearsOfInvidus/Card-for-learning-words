@@ -1,75 +1,78 @@
 /* ########## CARD ########## */
 
 .card-container {
-    position: relative;
-    width: 800px;
-    height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
+  width: 800px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
-  .card {
-    width: 100%;
-    height: 100%;
-    color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    cursor: pointer;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.4s;
-    margin-bottom: 20px;
-    display: block;
-    user-select: none;
-    border-radius: 10px;
-  }
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.4s;
+  margin-bottom: 20px;
+  display: block;
+  user-select: none;
+  border-radius: 20px;
+}
 
-  .card .front,
-  .card .back {
-    border-radius: inherit;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding: 30px;
-    backface-visibility: hidden;
-    font-weight: bold;
-    background-color: #212121;
-  }
+.card-front{
+  
+}
+  
+.card-back{
+  transform: rotateY(180deg);
+}
+  
+.card-front, .card-back{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  border-radius: 20px;
+}
 
-  .card .front {
-    font-size: 24px;
-    transform:rotateY(0deg);
-  }
+.front-text-container, .back-text-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  font-weight: bold;
+  background-color: #212121;
+  font-size: 24px;
+  border-radius: inherit;
+}
 
-  .card .back {
-    font-size: 24px;
-    transform: rotateY(180deg);
-  }
+.front-text-container {
+    
+}
 
-  .card .front-menu,
-  .card .back-menu {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    z-index: 10;
-  }
+.back-text-container {
 
-  .front-menu{
-    display: none;
-  }
+}
 
-  .back-menu{
-    display: none;
-    transform: rotateY(180deg);
-  }
+.front-text{
+  
+}
+
+.back-text{
+
+}
